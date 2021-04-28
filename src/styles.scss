@@ -1,1 +1,82 @@
 /* You can add global styles to this file, and also import other style files */
+@import "scss/variables";
+
+body {
+  font-size: 100%;
+  font-family: "Roboto", Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: $gray-lighter;
+}
+
+.shadow {
+  box-shadow: 1px 1px 3px #ddd;
+}
+
+.p-3 {
+  padding: 1rem;
+}
+
+.flex-box {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+
+  > p {
+    margin: 0;
+    padding: 1rem 0;
+    text-align: left;
+    flex-basis: 200px;
+  }
+
+  .selection {
+
+    padding: 0 .5rem;
+  }
+}
+.button-clear {
+  border: 0;
+  padding: 0;
+  background-color: transparent;
+}
+
+
+// fonts
+.text-light {
+  color: $text;
+}
+
+.header-text {
+  font-size: $headersSize;
+}
+
+// additional styles
+.green-light:before {
+  content: '';
+  position: absolute;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  background-color: $green;
+  border-radius: 10px;
+}
+
+.icon {
+  svg {
+    width: 100%;
+    height: 100%;
+    fill: $text;
+  }
+  &.icon-dark {
+    svg {
+      fill: #333;
+    }
+  }
+}
+
+
+.selected-icon {
+  svg {
+    fill: #4B93E2;
+  }
+}

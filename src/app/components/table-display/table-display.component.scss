@@ -1,0 +1,59 @@
+@import "src/scss/variables";
+
+table {
+  width: 100%;
+  border: 0;
+  border-collapse: collapse;
+  border: 1px solid $border;
+  color: $text;
+  background-color: $white;
+
+  caption {
+    background-color: $white;
+    border: 1px solid $border;
+    border-width: 1px 1px 0;
+  }
+  th {
+    text-align: left;
+    padding: 1rem 0;
+    font-weight: normal;
+    font-size:  $headersSize;
+    &.status {
+      padding-left: 30px;
+    }
+  }
+
+  tr {
+    border-bottom: 1px solid $border;
+
+    &:hover:not(.header) {
+      background-color: $gray-lighter;
+    }
+    &.selected {
+      background-color: $gray-light;
+    }
+  }
+
+  td {
+    margin: 0;
+    padding: 1rem 0;
+
+    &.selection {
+      text-align: center;
+    }
+    &.status {
+      position: relative;
+      padding-left: 30px;
+    }
+  }
+}
+.checkbox-button {
+  width: 24px;
+  height: 24px;
+  border: 0;
+  padding: 0;
+  background-color: transparent;
+  display: inline-block;
+}
+
+

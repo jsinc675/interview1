@@ -1,0 +1,61 @@
+<div class="shadow">
+  <table>
+    <caption>
+      <div class="flex-box text-light">
+        <div class="selection">
+          <button class="checkbox-button" type="button" (click)="selectAll()" title="Select All Available">
+            <svg-icon src="assets/svg/check_box_outline_blank.svg" [class]="'icon'"
+                      *ngIf="!selectedItems.length; else itemsSelected"></svg-icon>
+            <ng-template #itemsSelected>
+              <svg-icon src="assets/svg/indeterminate_check_box.svg" [class]="'icon'"
+                        *ngIf="selectedItems.length !== availableItemsCount"></svg-icon>
+              <svg-icon src="assets/svg/check_box.svg" [class]="'icon selected-icon'"
+                        *ngIf="selectedItems.length === availableItemsCount"></svg-icon>
+            </ng-template>
+          </button>
+        </div>
+        <p class="header-text">
+          <span *ngIf="selectedItems.length; else noneSelected">
+            Selected {{selectedItems.length}}
+          </span>
+          <ng-template #noneSelected>
+            None Selected
+          </ng-template>
+        </p>
+        <p>
+          <button class="button-clear header-text text-light" type="button" (click)="downloadSelected()">
+            <span class="checkbox-button">
+              <svg-icon src="assets/svg/file_download.svg" [class]="'icon icon-dark'"></svg-icon>
+            </span>
+            Download Selected
+          </button>
+        </p>
+      </div>
+    </caption>
+    <tr class="header">
+      <th></th>
+      <th *ngFor="let header of headers"  [class.status]="header.field === STATUS">
+        {{header.label}}
+      </th>
+    </tr>
+    <tr *ngFor="let item of items" [class.selected]="selectedItems.indexOf(item) !== -1">
+      <td class="selection">
+        <button class="checkbox-button" type="button" (click)="selectItem(item)"
+                [disabled]="item.status !== AVAILABLE" [title]="item.status === AVAILABLE ? 'Select' : 'Unavailable'">
+          <svg-icon src="assets/svg/check_box_outline_blank.svg" [class]="'icon'"
+                    *ngIf="selectedItems.indexOf(item) === -1; else selectedItem"></svg-icon>
+          <ng-template #selectedItem>
+            <svg-icon src="assets/svg/check_box.svg" [class]="'icon selected-icon'"></svg-icon>
+          </ng-template>
+        </button>
+
+      </td>
+      <td *ngFor="let key of headers" [class.status]="key.field === STATUS">
+        <span [class.green-light]="key.field === STATUS && item[key.field] === AVAILABLE">
+          {{key.field === STATUS ? (item[key.field] | titlecase) : item[key.field]}}
+        </span>
+      </td>
+    </tr>
+  </table>
+</div>
+
